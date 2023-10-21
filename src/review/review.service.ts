@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose, { Model } from 'mongoose';
-import { ReviewDTO, ReviewStatus, ReviewUpdateRequest } from './review.dto';
+import { ReviewCreateRequest, ReviewDTO, ReviewStatus, ReviewUpdateRequest } from './review.dto';
 import { ReviewDocument } from './review.schema';
 
 @Injectable()
@@ -10,9 +10,10 @@ export class ReviewService {
     @InjectModel('Review') private readonly reviewModel: Model<ReviewDocument>,
   ) {}  
 
-  async create(data: ReviewDTO) {
+  async create(data: ReviewCreateRequest) {
     const createdReview = new this.reviewModel({
-      ...data
+      ...data,
+      status: ReviewStatus.Reviewing
     });
     await createdReview.save();
 
