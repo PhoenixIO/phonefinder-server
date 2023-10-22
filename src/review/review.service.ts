@@ -61,4 +61,14 @@ export class ReviewService {
     }
     return reviews;
   }
+
+  async getByPhone(phone: string | number) {
+    const reviews = await this.reviewModel.find({
+        phone,
+    });
+    if (!reviews) {
+      throw new HttpException('Не знайдено', HttpStatus.NOT_FOUND);
+    }
+    return reviews;
+  }
 }

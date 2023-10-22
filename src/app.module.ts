@@ -13,7 +13,7 @@ import { ReviewModule } from './review/review.module';
     OpenaiModule,
     AuthModule,
     UserModule,
-    ReviewModule
+    ReviewModule,
   ],
   controllers: [AppController],
   providers: [AppService],
