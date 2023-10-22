@@ -32,9 +32,4 @@ export class ReviewController {
   async check(@Param('number') number: string) {
     return await this.reviewServise.getByPhone(number);
   }
-
-  @Get('/:id')
-  async get(@Param('id') id: mongoose.Types.ObjectId) {
-    return await this.reviewServise.getById(id);
-  }
 }

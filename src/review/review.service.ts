@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose, { Model } from 'mongoose';
-import { ReviewCreateRequest, ReviewDTO, ReviewStatus, ReviewUpdateRequest } from './review.dto';
+import { ReviewCreateRequest, ReviewStatus, ReviewUpdateRequest } from './review.dto';
 import { ReviewDocument } from './review.schema';
 
 @Injectable()
@@ -34,8 +34,8 @@ export class ReviewService {
 
   async getReviews(number: string) {
     const reviews = await this.reviewModel.find({
-        phone: number,
-        status: ReviewStatus.Verified
+      phone: number,
+      status: ReviewStatus.Verified,
     }).exec();
 
     if (!reviews) {
@@ -53,9 +53,7 @@ export class ReviewService {
   }
 
   async getByStatus(status: ReviewStatus) {
-    const reviews = await this.reviewModel.find({
-        status: status
-    });
+    const reviews = await this.reviewModel.find({ status: status });
     if (!reviews) {
       throw new HttpException('Не знайдено', HttpStatus.NOT_FOUND);
     }
@@ -63,9 +61,7 @@ export class ReviewService {
   }
 
   async getByPhone(phone: string | number) {
-    const reviews = await this.reviewModel.find({
-        phone,
-    });
+    const reviews = await this.reviewModel.find({ phone });
     if (!reviews) {
       throw new HttpException('Не знайдено', HttpStatus.NOT_FOUND);
     }
