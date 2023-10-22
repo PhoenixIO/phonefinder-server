@@ -5,8 +5,7 @@ import { AppController } from './app.controller';
 import { OpenaiModule } from './openai/openai.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
-import { TemplatesModule } from './templates/templates.module';
-import { ExamModule } from './exam/exam.module';
+import { ReviewModule } from './review/review.module';
 
 @Module({
   imports: [
@@ -14,8 +13,7 @@ import { ExamModule } from './exam/exam.module';
     OpenaiModule,
     AuthModule,
     UserModule,
-    TemplatesModule,
-    ExamModule,
+    ReviewModule
   ],
   controllers: [AppController],
   providers: [AppService],
