@@ -61,7 +61,7 @@ async function bootstrap() {
       saveUninitialized: false,
     }),
   );
-  await app.listen(3000);
+  await app.listen(process.env.PORT);
   console.log(`Server is running on: ${await app.getUrl()}`);
 }
 bootstrap();
